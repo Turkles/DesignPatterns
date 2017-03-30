@@ -1,11 +1,13 @@
-class FanDriver { // wzorzec fasady
+package com.designpatterns.fasade;
+
+public class Fasade { // wzorzec fasady
 
     private OilPumpDriver oilDriver;
     private BrakeDriver brakeDriver;
     private ElectricityMainDriver mainSwitchDriver;
     private SwitchDriver swDriver;
 
-    public FanDriver() {
+    public Fasade() {
         oilDriver = new OilPumpDriver();
         brakeDriver = new BrakeDriver();
         swDriver = new SwitchDriver();
