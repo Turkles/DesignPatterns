@@ -1,3 +1,5 @@
+package com.designpatterns;
+
 import com.designpatterns.fasade.Fasade;
 import com.designpatterns.strategy.Strategy;
 
@@ -24,6 +26,7 @@ public class Main {
         ReadSortSave = new Strategy();
         Scanner in = new Scanner(System.in);
         System.out.println("What file do you want to read? 0 - txt, 1-'XML'");
+
 
 
 
