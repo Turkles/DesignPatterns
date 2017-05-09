@@ -1,6 +1,11 @@
 package com.designpatterns;
 
+import com.designpatterns.command_decorator.Editor;
 import com.designpatterns.fasade.Fasade;
+import com.designpatterns.observer_visitor_iterator.FireAlarm;
+import com.designpatterns.observer_visitor_iterator.MySmokeDetecter;
+import com.designpatterns.observer_visitor_iterator.MyTermometer;
+import com.designpatterns.observer_visitor_iterator.interfaces.SmokeDetector;
 import com.designpatterns.strategy.*;
 
 
@@ -14,7 +19,9 @@ public class Main {
 
         //exampleOfFasade();
 
-        exampleOfStrategy();
+        //exampleOfStrategy();
+
+        exampleOfObservatorIteratorVisitator();
     }
 
     public static void exampleOfFasade(){
@@ -43,6 +50,32 @@ public class Main {
         if( q == 1){ ReadSortSave.setSave(new SaveXML()); }
 
         ReadSortSave.doTheJob("in.txt");
+    }
+
+    public static void exampleOfCommandAndDecorator(){
+        Editor myEditor = new Editor();
+
+        /*
+        Scanner in = new Scanner(file);     // add
+        while (in.hasNextLine()) {
+            tempList.add(in.nextInt());
+        }
+        in.close();
+        */
+    }
+
+    public static void exampleOfObservatorIteratorVisitator(){
+
+        FireAlarm fireAlarm = new FireAlarm();
+        MySmokeDetecter mySmokeDetecter = new MySmokeDetecter();
+        mySmokeDetecter.addSmokeObserver(fireAlarm);
+
+        MyTermometer myTermometer = new MyTermometer();
+        myTermometer.addTemperatureObserver(fireAlarm);
+
+        mySmokeDetecter.checkSmoke();
+        myTermometer.measureTemperature();
+
     }
 }
 

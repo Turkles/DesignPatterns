@@ -1,11 +1,13 @@
-package com.designpatterns.observer_visitor_iterator.interfaces;
+package com.designpatterns.observer_visitor_iterator;
 
-import com.designpatterns.observer_visitor_iterator.FireAlarm;
+import com.designpatterns.observer_visitor_iterator.interfaces.SmokeDetector;
+import com.designpatterns.observer_visitor_iterator.interfaces.Termometer;
+import com.designpatterns.observer_visitor_iterator.interfaces.Visitor;
 
 /**
  * Created by Filip on 09.05.2017.
  */
-public class FireAlarmVisitator implements Visitator {
+public class FireAlarmVisitor implements Visitor {
 
     @Override
     public void vist(Termometer termometer, FireAlarm fireAlarm) {
