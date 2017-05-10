@@ -15,9 +15,8 @@ public class FireAlarm implements TemperatureObserver, SmokeObserver {
 
     @Override
     public void temperatureChange(float t) {
-        if( t > 25 ){
-
-            System.out.println("Temperature > 25 Detected!");
+        if( t > 32 ){
+            System.out.println("Temperature - "+t+"  > 32 ! pip!  ");
         }
     }
 }

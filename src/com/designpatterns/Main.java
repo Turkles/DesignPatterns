@@ -2,13 +2,12 @@ package com.designpatterns;
 
 import com.designpatterns.command_decorator.Editor;
 import com.designpatterns.fasade.Fasade;
-import com.designpatterns.observer_visitor_iterator.FireAlarm;
-import com.designpatterns.observer_visitor_iterator.MySmokeDetecter;
-import com.designpatterns.observer_visitor_iterator.MyTermometer;
-import com.designpatterns.observer_visitor_iterator.interfaces.SmokeDetector;
+import com.designpatterns.observer_visitor_iterator.*;
 import com.designpatterns.strategy.*;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -66,15 +65,38 @@ public class Main {
 
     public static void exampleOfObservatorIteratorVisitator(){
 
+        /*
         FireAlarm fireAlarm = new FireAlarm();
-        MySmokeDetecter mySmokeDetecter = new MySmokeDetecter();
-        mySmokeDetecter.addSmokeObserver(fireAlarm);
+        MySmokeDetector mySmokeDetector = new MySmokeDetector();
+        mySmokeDetector.addSmokeObserver(fireAlarm);
 
         MyTermometer myTermometer = new MyTermometer();
         myTermometer.addTemperatureObserver(fireAlarm);
 
-        mySmokeDetecter.checkSmoke();
+        mySmokeDetector.checkSmoke();
         myTermometer.measureTemperature();
+        */
+
+        Sensor sensor = new Sensor();
+        FireAlarm fireAlarm = new FireAlarm();
+
+        List<Sensor> sensors = new ArrayList<Sensor>();
+        sensors.add(new KitchenSensor());
+        sensors.add(new DiningRoomSensor());
+
+        for ( Sensor s : sensors ) {
+            s.visitAll(new FireAlarmVisitor(fireAlarm));
+        }
+
+        SensorsIterator sensorsIterator = new SensorsIterator(sensors);
+        for ( Sensor s : sensors ) {
+            System.out.println(s.name);
+
+            s.measure();
+        }
+
+
+
 
     }
 }

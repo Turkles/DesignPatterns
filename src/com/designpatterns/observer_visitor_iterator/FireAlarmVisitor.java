@@ -9,13 +9,15 @@ import com.designpatterns.observer_visitor_iterator.interfaces.Visitor;
  */
 public class FireAlarmVisitor implements Visitor {
 
-    @Override
-    public void vist(Termometer termometer, FireAlarm fireAlarm) {
-        termometer.addTemperatureObserver(fireAlarm);
+    FireAlarm fireAlarm;
+
+    public FireAlarmVisitor(FireAlarm fireAlarm) {
+        this.fireAlarm = fireAlarm;
     }
 
+
     @Override
-    public void vist(SmokeDetector smokeDetector, FireAlarm fireAlarm) {
-        smokeDetector.addSmokeObserver(fireAlarm);
+    public FireAlarm addFireAlarm() {
+        return fireAlarm;
     }
 }

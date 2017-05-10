@@ -1,8 +1,6 @@
 package com.designpatterns.observer_visitor_iterator;
 
-import com.designpatterns.observer_visitor_iterator.interfaces.TemperatureObserver;
-import com.designpatterns.observer_visitor_iterator.interfaces.Termometer;
-import com.designpatterns.observer_visitor_iterator.interfaces.TestableDetector;
+import com.designpatterns.observer_visitor_iterator.interfaces.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +9,7 @@ import java.util.Random;
 /**
  * Created by Filip on 08.05.2017.
  */
-public class MyTermometer implements Termometer, TestableDetector {
+public class MyTermometer implements Termometer, TestableDetector, Visitable {
     List<TemperatureObserver> observers = new ArrayList<TemperatureObserver>();
 
     float previousTemperature =0;
@@ -49,5 +47,11 @@ public class MyTermometer implements Termometer, TestableDetector {
     public boolean test() {
         System.out.println("Im MyTermometr class");
         return false;
+    }
+
+
+    @Override
+    public void acceptVisitor( Visitor visitor ) {
+        addTemperatureObserver(visitor.addFireAlarm());
     }
 }

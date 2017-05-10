@@ -1,14 +1,12 @@
 package com.designpatterns.observer_visitor_iterator;
 
-import com.designpatterns.observer_visitor_iterator.interfaces.SmokeDetector;
-import com.designpatterns.observer_visitor_iterator.interfaces.SmokeObserver;
-import com.designpatterns.observer_visitor_iterator.interfaces.TestableDetector;
+import com.designpatterns.observer_visitor_iterator.interfaces.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MySmokeDetecter implements SmokeDetector, TestableDetector {
+public class MySmokeDetector implements SmokeDetector, TestableDetector, Visitable {
 
     List<SmokeObserver> observers = new ArrayList<SmokeObserver>();
 
@@ -45,5 +43,10 @@ public class MySmokeDetecter implements SmokeDetector, TestableDetector {
     public boolean test() {
         System.out.println("Im MySmokeDetecter class");
         return false;
+    }
+
+    @Override
+    public void acceptVisitor( Visitor visitor ) {
+        addSmokeObserver(visitor.addFireAlarm());
     }
 }
