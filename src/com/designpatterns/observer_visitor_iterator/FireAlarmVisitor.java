@@ -1,7 +1,5 @@
 package com.designpatterns.observer_visitor_iterator;
 
-import com.designpatterns.observer_visitor_iterator.interfaces.SmokeDetector;
-import com.designpatterns.observer_visitor_iterator.interfaces.Termometer;
 import com.designpatterns.observer_visitor_iterator.interfaces.Visitor;
 
 /**

@@ -1,5 +1,7 @@
 package com.designpatterns;
 
+import com.designpatterns.chain_of_responsibility.Cargo;
+import com.designpatterns.chain_of_responsibility.CargoSenderAdrvisor;
 import com.designpatterns.command_decorator.Editor;
 import com.designpatterns.fasade.Fasade;
 import com.designpatterns.observer_visitor_iterator.*;
@@ -20,7 +22,9 @@ public class Main {
 
         //exampleOfStrategy();
 
-        exampleOfObservatorIteratorVisitator();
+        //exampleOfObservatorIteratorVisitator();
+
+        exampleOfChainOfResponsibility();
     }
 
     public static void exampleOfFasade(){
@@ -98,6 +102,16 @@ public class Main {
 
 
 
+    }
+
+    public static void exampleOfChainOfResponsibility(){
+
+        CargoSenderAdrvisor cargoSenderAdvisor = new CargoSenderAdrvisor();
+        cargoSenderAdvisor.adviseSendingWay(new Cargo(20, "UK"));
+        cargoSenderAdvisor.adviseSendingWay(new Cargo(0.4, "Poland"));
+        cargoSenderAdvisor.adviseSendingWay(new Cargo(150, "Poland"));
+        cargoSenderAdvisor.adviseSendingWay(new Cargo(10, "Ukraine"));
+        cargoSenderAdvisor.adviseSendingWay(new Cargo(3, "Poland"));
     }
 }
 
